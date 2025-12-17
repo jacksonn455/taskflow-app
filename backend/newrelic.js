@@ -3,7 +3,7 @@
 require('dotenv').config();
 
 const licenseKey = process.env.NEW_RELIC_LICENSE_KEY;
-const appName = process.env.NEW_RELIC_APP_NAME || 'swovo-technical-interview-api';
+const appName = process.env.NEW_RELIC_APP_NAME || 'taskflow-app';
 
 exports.config = {
   agent_enabled: !!licenseKey,
