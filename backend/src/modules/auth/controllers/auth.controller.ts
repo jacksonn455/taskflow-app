@@ -1,4 +1,3 @@
-// src/modules/auth/auth.controller.ts
 import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from '../auth.service';
 
@@ -7,14 +6,8 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  register(
-    @Body() body: { name: string; email: string; password: string },
-  ) {
-    return this.authService.register(
-      body.name,
-      body.email,
-      body.password,
-    );
+  register(@Body() body: { name: string; email: string; password: string }) {
+    return this.authService.register(body.name, body.email, body.password);
   }
 
   @Post('login')

@@ -6,6 +6,7 @@ import { RedisModule } from './config/redis/redis.module';
 import { MongoModule } from './config/mongodb/mongo.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/modules/users.module';
+import { TasksModule } from './modules/task/modules/tasks.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UsersModule } from './modules/users/modules/users.module';
     MongoModule,
     AuthModule,
     UsersModule,
+    TasksModule,
   ],
 })
 export class AppModule {}
