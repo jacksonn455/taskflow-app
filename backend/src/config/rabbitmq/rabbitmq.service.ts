@@ -3,9 +3,7 @@ import * as amqp from 'amqplib';
 import { NewRelicService } from '../newrelic/new-relic.service';
 
 @Injectable()
-export class RabbitMQService
-  implements OnModuleInit, OnModuleDestroy
-{
+export class RabbitMQService implements OnModuleInit, OnModuleDestroy {
   private connection: amqp.Connection;
   private channel: amqp.Channel;
 
@@ -23,22 +21,26 @@ export class RabbitMQService
       this.connection = await amqp.connect(url);
       this.channel = await this.connection.createChannel();
 
-      console.log('RabbitMQ connected');
-
-      this.newRelic.recordEvent('RabbitMQConnected', {
-        url,
+      await this.channel.assertExchange('tasks', 'direct', {
+        durable: true,
       });
+
+      await this.channel.assertQueue('tasks_queue', {
+        durable: true,
+      });
+
+      await this.channel.bindQueue('tasks_queue', 'tasks', 'tasks');
+
+      console.log('RabbitMQ connected and configured');
+
+      this.newRelic.recordEvent('RabbitMQConnected', { url });
     } catch (error) {
       this.newRelic.noticeError(error);
       throw error;
     }
   }
 
-  async publish(
-    exchange: string,
-    routingKey: string,
-    message: unknown,
-  ) {
+  async publish(exchange: string, routingKey: string, message: unknown) {
     const start = Date.now();
 
     try {

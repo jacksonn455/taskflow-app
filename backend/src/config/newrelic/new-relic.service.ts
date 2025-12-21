@@ -20,7 +20,6 @@ export class NewRelicService implements OnModuleInit {
       return;
     }
 
-    // IMPORTANTE: isso inicializa o agent
     require('newrelic');
 
     newRelicEnabled = true;
@@ -39,19 +38,13 @@ export class NewRelicService implements OnModuleInit {
     newrelic.recordCustomEvent(eventType, attributes);
   }
 
-  addCustomAttribute(
-    key: string,
-    value: string | number | boolean,
-  ): void {
+  addCustomAttribute(key: string, value: string | number | boolean): void {
     if (!newRelicEnabled) return;
     const newrelic = require('newrelic');
     newrelic.addCustomAttribute(key, value);
   }
 
-  noticeError(
-    error: Error,
-    customAttributes?: Record<string, any>,
-  ): void {
+  noticeError(error: Error, customAttributes?: Record<string, any>): void {
     if (!newRelicEnabled) return;
     const newrelic = require('newrelic');
     newrelic.noticeError(error, customAttributes);
