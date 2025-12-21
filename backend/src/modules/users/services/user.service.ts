@@ -1,4 +1,3 @@
-// src/modules/users/services/user.service.ts
 import { Injectable } from '@nestjs/common';
 import { MongoService } from '../../../config/mongodb/mongo.service';
 import { User } from '../entities/user.entity';
