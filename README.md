@@ -7,8 +7,10 @@ Detailed documentation for each part of the project is located in their respecti
 
   ![](https://github.com/jacksonn455/taskflow-app/blob/main/images/login.png)
   ![](https://github.com/jacksonn455/taskflow-app/blob/main/images/register.png)
-  ![](https://github.com/jacksonn455/taskflow-app/blob/main/images/table.png)
-
+  ![](https://github.com/jacksonn455/taskflow-app/blob/main/images/empty.png)
+  ![](https://github.com/jacksonn455/taskflow-app/blob/main/images/new-task.png)
+  ![](https://github.com/jacksonn455/taskflow-app/blob/main/images/done.png)
+  ![](https://github.com/jacksonn455/taskflow-app/blob/main/images/statistic.png)
 
 ## Quick Start
 
