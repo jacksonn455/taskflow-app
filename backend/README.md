@@ -412,13 +412,10 @@ The `TasksConsumer` processes events asynchronously:
 ```typescript
 @EventPattern('task.completed')
 async handleTaskCompleted(data: any) {
-  // Send email notification
   await emailService.sendCompletionEmail(data.userId, data.title);
   
-  // Update user statistics
   await statsService.incrementCompletedTasks(data.userId);
   
-  // Track in New Relic
   newrelic.recordCustomEvent('TaskCompletedEvent', data);
 }
 ```
